@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Auth } from "./Auth";
 import { authUser, handelAuthInputs } from "../../store/reducers/authReducers";
+import { withSnackbar } from "notistack";
 
 type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
 

@@ -1,19 +1,6 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { useStyles } from "./AuthStyles";
 import { TextField, Button } from "@material-ui/core";
-
-const useStyles = makeStyles({
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center",
-    minHeight: "100vh",
-  },
-  root: {
-    marginBottom: "25px",
-  },
-});
 
 type PropsType = {
   email: "string";
