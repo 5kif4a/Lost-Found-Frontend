@@ -1,14 +1,13 @@
 import React, {FC} from 'react';
-import {Box, Typography} from "@material-ui/core";
+import {MuiThemeProvider} from "@material-ui/core";
+import {theme} from "./theme/theme";
 
 
 const App: FC = () => {
     return (
-        <Box>
-            <Typography variant="h1">
-                Lost N Found
-            </Typography>
-        </Box>
+        <MuiThemeProvider theme={theme}>
+
+        </MuiThemeProvider>
     );
 }
 
