@@ -2,11 +2,12 @@
 import { authAPI } from "../../api/authAPI"
 
 const HANDLE__AUTH__INPUTS = "./authReducers/HANDLE__AUTH__INPUTS"
-
+const AUTH__LOGIN__API__STATUS = "./authReducers/AUTH__LOGIN__API__STATUS"
 
 const initialState = {
   email: "",
-  password: ""
+  password: "",
+  apiStatus: ""
 }
 
 
@@ -20,20 +21,30 @@ const authReducer = (state = initialState, action: any) => {
       }
     }
 
+    case AUTH__LOGIN__API__STATUS: {
+      console.log(action.apiStatus)
+      return {
+        ...state,
+        apiStatus: action.apiStatus
+      }
+    }
+
     default:
       return state
   }
 }
 
 export const handelAuthInputs = (inputName: string, value: string) => ({ type: HANDLE__AUTH__INPUTS, inputName, value })
+export const authLoginApiStatus = (apiStatus: string) => ({ type: AUTH__LOGIN__API__STATUS, apiStatus })
 
 
 
 export const authUser = (email: string, password: string) => {
-  return async () => {
+  return async (dispatch: any) => {
     try {
       let response = await authAPI.auth(email, password);
-      console.log(response)
+      dispatch(authLoginApiStatus(response.status))
+      console.log(response.status)
 
     } catch (error) {
       console.error(error)
