@@ -1,27 +1,36 @@
-import React, {FC} from "react";
-import {Box, IconButton, Typography} from "@material-ui/core";
+import React, {FC, useState} from "react";
+import {Box, Drawer, IconButton, Typography} from "@material-ui/core";
 import {useHeaderStyles} from "./HeaderStyles";
-import {ArrowBack} from "@material-ui/icons";
 import MenuIcon from '@material-ui/icons/Menu';
 import {useHistory} from "react-router-dom";
+import {Menu} from "../Menu/Menu";
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 export const Header: FC = () => {
     const classes = useHeaderStyles();
     const history = useHistory();
 
+    const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+
     const handleGoBack = () => history.push("/feed");
+
+    const handleOpenMenu = () => setMenuIsOpen(true);
+    const handleCloseMenu = () => setMenuIsOpen(false);
 
     return (
         <Box className={classes.root}>
             <IconButton onClick={handleGoBack}>
-                <ArrowBack/>
+                <ArrowBackIosIcon/>
             </IconButton>
             <Typography className={classes.brand}>
                 Потеряшки BI
             </Typography>
-            <IconButton>
+            <IconButton onClick={handleOpenMenu}>
                 <MenuIcon/>
             </IconButton>
+            <Drawer anchor="left" open={menuIsOpen} onClose={handleCloseMenu}>
+                <Menu onClose={handleCloseMenu}/>
+            </Drawer>
         </Box>
     )
 }

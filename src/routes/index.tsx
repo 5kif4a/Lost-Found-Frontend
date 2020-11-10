@@ -13,8 +13,10 @@ export const Routes: FC = () => {
             <Route exact path="/feed" component={Feed}/>
             <Route exact path="/stories" component={_Stories}/>
             <Route exact path="/posts/:postId" component={Post}/>
+            <Route exact path="/me/items/:itemId" component={Items}/>
             <Route exact path="/me/items" component={Items}/>
         </Switch>
     );
 };
+
 
