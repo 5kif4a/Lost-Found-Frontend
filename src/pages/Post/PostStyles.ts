@@ -9,7 +9,7 @@ export const usePostStyles = makeStyles((theme) => ({
     },
     img: {
         width: "100%",
-        height: "300px"
+        height: "350px"
     },
     toolbar: {
         display: "flex",
@@ -30,16 +30,21 @@ export const usePostStyles = makeStyles((theme) => ({
         marginRight: "8px"
     },
     title: {
-        fontSize: "16px",
-        lineHeight: "24px",
+        fontSize: "24px",
+        lineHeight: "32px",
         fontWeight: 500,
-        margin: "8px"
+        margin: "16px"
     },
     content: {
         margin: "8px"
     },
     content__field: {
-        color: "#4248D3",
-        fontWeight: 500
+        fontSize: "20px",
+        margin: "8px",
+        "& span": {
+            fontSize: "20px",
+            fontWeight: 500,
+            color: "#4248D3"
+        }
     }
 }))

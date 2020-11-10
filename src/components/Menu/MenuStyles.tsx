@@ -3,8 +3,10 @@ import {makeStyles} from "@material-ui/core/styles";
 export const useMenuStyles = makeStyles({
     root: {
         width: "100vw",
+        height: "100%",
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        position: "relative"
     },
     header: {
         display: "flex",
@@ -16,6 +18,15 @@ export const useMenuStyles = makeStyles({
     user: {
         display: "flex",
         alignItems: "center",
+        marginRight: "8px"
+    },
+    user_info: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-end"
+    },
+    user_karma: {
+        fontSize: "10px",
         marginRight: "8px"
     },
     user_fullname: {
@@ -43,4 +54,9 @@ export const useMenuStyles = makeStyles({
         height: "80px",
         marginRight: "16px"
     },
+    logout: {
+        position: "absolute",
+        right: 8,
+        bottom: 8
+    }
 });

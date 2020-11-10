@@ -1,25 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Auth} from "./Auth";
-import {handleAuthInputs} from "../../store/reducers/auth.reducer";
 import {Redirect} from "react-router-dom";
 import {authUserThunk} from "../../store/thunk/auth.thunk";
+import {handleAuthInputs} from "../../store/actions/auth.action";
+import {withSnackbar} from "notistack";
 
-type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
-
-type MapStatePropsType = {
-    email: string;
-    password: string;
-    success: boolean
-};
-type MapDispatchPropsType = {
-    authUserThunk: (email: string, password: string) => void;
-    handleAuthInputs: (inputName: string, value: string) => void;
-};
-
-type OwnPropsType = {};
-
-class _AuthContainer extends React.Component<PropsType> {
+class _AuthContainer extends React.Component<any> {
     state = {
         redirect: false,
     };
@@ -36,7 +23,7 @@ class _AuthContainer extends React.Component<PropsType> {
         try {
             await this.props.authUserThunk(this.props.email, this.props.password);
         } catch (error) {
-
+            this.props.enqueueSnackbar("Неверные данные", {variant: "error"})
         }
     };
 
@@ -55,7 +42,7 @@ class _AuthContainer extends React.Component<PropsType> {
     }
 }
 
-let mapStateToProps = (state: any) => {
+const mapStateToProps = (state: any) => {
     return {
         email: state.auth.email,
         password: state.auth.password,
@@ -63,7 +50,10 @@ let mapStateToProps = (state: any) => {
     };
 };
 
-const AuthContainer = connect(mapStateToProps, {authUserThunk, handleAuthInputs: handleAuthInputs})(
-    _AuthContainer
-);
+const AuthContainer = connect(
+    mapStateToProps, {
+        authUserThunk,
+        handleAuthInputs: handleAuthInputs
+    })(withSnackbar(_AuthContainer))
+
 export {AuthContainer};

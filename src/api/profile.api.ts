@@ -2,7 +2,8 @@ import {axiosInstance} from "./axiosInstance";
 
 export const getProfileInfo = async () => {
     try {
-        await axiosInstance.get("/me");
+        const response = await axiosInstance.get("/me");
+        return response.data
     } catch (error) {
         throw error;
     }

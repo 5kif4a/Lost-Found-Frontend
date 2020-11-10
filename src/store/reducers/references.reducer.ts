@@ -6,7 +6,7 @@ export interface IReference {
     name: string
 }
 
-interface IReferencesState {
+export interface IReferencesState {
     categories: IReference[]
     statuses: IReference[]
 }

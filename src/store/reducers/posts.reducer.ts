@@ -3,7 +3,8 @@ import {GET_POSTS, PUBLISH_POST} from "../actions/posts.action";
 import {ICategory, IUser} from "./interfaces";
 
 export interface IPost {
-    id: string,
+    id: string
+    location: string | null
     title: string
     description: string
     imageIndex: string
@@ -12,7 +13,7 @@ export interface IPost {
     createdAt: string
 }
 
-interface IPostsState {
+export interface IPostsState {
     posts: IPost[]
 }
 

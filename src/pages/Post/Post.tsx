@@ -38,7 +38,7 @@ export const Post: FC = () => {
             <img className={classes.img} src={post?.imageIndex} alt="post image"/>
             <Box className={classes.toolbar}>
                 <Box className={classes.toolbar__btn_block}>
-                    <IconButton><PhoneIcon/></IconButton>
+                    <IconButton href="tel:8-778-832-32-01"><PhoneIcon/></IconButton>
                     <IconButton><ChatIcon/></IconButton>
                     <IconButton onClick={handleOpenShareModal}><ShareIcon/></IconButton>
                 </Box>
@@ -53,9 +53,12 @@ export const Post: FC = () => {
             <Box className={classes.title}>{post?.title}</Box>
             <Divider/>
             <Box className={classes.content}>
-                {/*<Typography className={classes.content__field}>Место находки: {}</Typography>*/}
-                <Typography className={classes.content__field}>Категория: {post?.category.name}</Typography>
-                <Typography className={classes.content__field}>Описание: {post?.description}</Typography>
+                <Typography className={classes.content__field}><Typography component="span">Место
+                    находки: </Typography>{post?.location || "не указано"}</Typography>
+                <Typography className={classes.content__field}><Typography
+                    component="span">Категория: </Typography>{post?.category.name}</Typography>
+                <Typography className={classes.content__field}><Typography
+                    component="span">Описание: </Typography>{post?.description}</Typography>
             </Box>
         </Box>
     )

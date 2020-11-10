@@ -11,7 +11,7 @@ export interface IStory {
     posts: IPost[]
 }
 
-interface IStoriesState {
+export interface IStoriesState {
     stories: Story[]
 }
 

@@ -1,14 +1,17 @@
-import React, {FC, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {Box, Drawer, IconButton, Typography} from "@material-ui/core";
 import {useHeaderStyles} from "./HeaderStyles";
 import MenuIcon from '@material-ui/icons/Menu';
 import {useHistory} from "react-router-dom";
 import {Menu} from "../Menu/Menu";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import {useDispatch} from "react-redux";
+import {getProfileInfoThunk} from "../../store/thunk/profile.thunk";
 
 export const Header: FC = () => {
     const classes = useHeaderStyles();
     const history = useHistory();
+    const dispatch: any = useDispatch();
 
     const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
 
@@ -16,6 +19,10 @@ export const Header: FC = () => {
 
     const handleOpenMenu = () => setMenuIsOpen(true);
     const handleCloseMenu = () => setMenuIsOpen(false);
+
+    useEffect(() => {
+        dispatch(getProfileInfoThunk());
+    }, [])
 
     return (
         <Box className={classes.root}>

@@ -17,6 +17,7 @@ export const CreatePost: FC = () => {
     const history = useHistory();
     const {enqueueSnackbar} = useSnackbar();
     const {categories, statuses} = useTypedSelector(state => state.references)
+    const {isAuthenticated} = useTypedSelector(state => state.auth)
 
     const [isRequesting, setIsRequesting] = useState<boolean>(false);
 
@@ -61,7 +62,9 @@ export const CreatePost: FC = () => {
             data.append("category", category);
 
             await dispatch(publishPostThunk(data))
-            history.push("/feed")
+
+            if (isAuthenticated) history.push("/feed")
+
             enqueueSnackbar("Пост успешно опубликован", {variant: "success"})
         } catch (e) {
             enqueueSnackbar("Произошла ошибка при публикации поста", {variant: "error"})

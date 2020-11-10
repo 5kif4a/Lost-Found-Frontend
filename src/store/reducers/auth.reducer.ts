@@ -1,7 +1,14 @@
-const HANDLE__AUTH__INPUTS = "HANDLE__AUTH__INPUTS"
-const USER_AUTH = "USER_AUTH"
+import {HANDLE__AUTH__INPUTS, LOGOUT, USER_AUTH} from "../actions/auth.action";
 
-const initialState: any = {
+export interface IAuthState {
+    isAuthenticated: boolean
+    email: string
+    password: string
+    success: boolean
+}
+
+const initialState: IAuthState = {
+    isAuthenticated: !!localStorage.getItem("accessToken"),
     email: "",
     password: "",
     success: false
@@ -18,7 +25,17 @@ export const authReducer = (state = initialState, action: any) => {
         case USER_AUTH: {
             return {
                 ...state,
+                isAuthenticated: true,
                 success: action.data
+            }
+        }
+        case LOGOUT: {
+            return {
+                ...state,
+                email: "",
+                password: "",
+                success: false,
+                isAuthenticated: false,
             }
         }
         default:
@@ -26,5 +43,3 @@ export const authReducer = (state = initialState, action: any) => {
     }
 }
 
-export const handleAuthInputs = (inputName: string, value: string) => ({type: HANDLE__AUTH__INPUTS, inputName, value})
-export const authUser = (data: any) => ({type: USER_AUTH, data})

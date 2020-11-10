@@ -1,20 +1,22 @@
 import {applyMiddleware, combineReducers, createStore} from "redux"
-import {profileReducer} from "./reducers/profile.reducer"
-import {authReducer} from "./reducers/auth.reducer"
+import {IProfileState, profileReducer} from "./reducers/profile.reducer"
+import {authReducer, IAuthState} from "./reducers/auth.reducer"
 
 import thunkMiddleware from "redux-thunk";
-import {postsReducer} from "./reducers/posts.reducer";
+import {IPostsState, postsReducer} from "./reducers/posts.reducer";
 import {createSelectorHook} from "react-redux";
-import {storiesReducer} from "./reducers/stories.reducer";
+import {IStoriesState, storiesReducer} from "./reducers/stories.reducer";
 import {IAction} from "./actions";
-import {referencesReducer} from "./reducers/references.reducer";
+import {IReferencesState, referencesReducer} from "./reducers/references.reducer";
+import {IItemsState, itemsReducer} from "./reducers/items.reducer";
 
 interface IRootReducer {
-    profile: any
-    auth: any
-    posts: any
-    stories: any
-    references: any
+    profile: IProfileState
+    auth: IAuthState
+    posts: IPostsState
+    stories: IStoriesState
+    references: IReferencesState
+    items: IItemsState
 }
 
 const rootReducer = combineReducers<IRootReducer>({
@@ -22,7 +24,8 @@ const rootReducer = combineReducers<IRootReducer>({
     auth: authReducer,
     posts: postsReducer,
     stories: storiesReducer,
-    references: referencesReducer
+    references: referencesReducer,
+    items: itemsReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))

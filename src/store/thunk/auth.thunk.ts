@@ -1,5 +1,5 @@
-import {login} from "../../api/authAPI";
-import {authUser} from "../reducers/auth.reducer";
+import {login} from "../../api/auth.api";
+import {authUser} from "../actions/auth.action";
 
 export const authUserThunk = (email: string, password: string) => {
     return async (dispatch: any) => {
