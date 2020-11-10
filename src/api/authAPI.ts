@@ -1,16 +1,14 @@
-import { instance } from "./axiosInstance";
+import {axiosInstance} from "./axiosInstance";
 
-const authAPI = {
-  auth: async (email: string, password: string) => {
-    try {
-      return await instance.post(`/login`, {
-        email,
-        password
-      });
-    } catch (error) {
-      throw error;
-    }
-  },
+const login = {
+    auth: async (email: string, password: string) => {
+        try {
+            return await axiosInstance.post(`/login`, {
+                email,
+                password
+            });
+        } catch (error) {
+            throw error;
+        }
+    },
 };
-
-export { authAPI }
