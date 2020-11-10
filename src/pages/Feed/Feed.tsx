@@ -1,3 +1,4 @@
+
 import React, { FC } from "react";
 import { Box, Divider, Grid } from "@material-ui/core";
 import { useFeedStyles } from "./FeedStyles";
@@ -8,6 +9,7 @@ import { FoundIcon } from "../../assets/icons/FoundIcon";
 import { SearchIcon } from "../../assets/icons/SearchIcon";
 import { RecentIcon } from "../../assets/icons/RecentIcon";
 import { PostCard } from "../../components/PostCard/PostCard";
+
 
 export const Feed: FC = () => {
   const classes = useFeedStyles();
@@ -60,3 +62,4 @@ export const Feed: FC = () => {
     </Box>
   );
 };
+

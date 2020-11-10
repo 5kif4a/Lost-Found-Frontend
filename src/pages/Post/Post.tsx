@@ -3,6 +3,8 @@ import {Avatar, Box, Divider, IconButton, Typography} from "@material-ui/core";
 import {usePostStyles} from "./PostStyles";
 import PhoneIcon from '@material-ui/icons/Phone';
 import ChatIcon from '@material-ui/icons/Chat';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import {useHistory} from "react-router-dom";
 
 export const Post: FC = () => {
     const classes = usePostStyles();

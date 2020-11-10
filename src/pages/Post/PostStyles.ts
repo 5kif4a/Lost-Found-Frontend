@@ -4,6 +4,7 @@ export const usePostStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
         flexDirection: "column",
+        position: "relative",
         [theme.breakpoints.down("xs")]: {}
     },
     img: {

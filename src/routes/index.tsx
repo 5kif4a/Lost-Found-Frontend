@@ -1,3 +1,4 @@
+
 import React, { FC } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Post } from "../pages/Post/Post";
@@ -16,4 +17,4 @@ export const Routes: FC = () => {
       </Switch>
     </Router>
   );
-};
+

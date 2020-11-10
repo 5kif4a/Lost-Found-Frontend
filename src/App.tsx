@@ -1,3 +1,4 @@
+
 import React, { FC } from "react";
 import { CssBaseline, MuiThemeProvider } from "@material-ui/core";
 import { theme } from "./theme/theme";
@@ -13,6 +14,7 @@ const App: FC = () => {
       </SnackbarProvider>
     </MuiThemeProvider>
   );
+
 };
 
 export default App;
