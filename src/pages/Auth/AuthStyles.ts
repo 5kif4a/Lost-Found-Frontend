@@ -1,15 +1,17 @@
-import { makeStyles } from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
     container: {
         display: "flex",
-        justifyContent: "center",
         flexDirection: "column",
         alignItems: "center",
         minHeight: "100vh",
     },
+    brand: {
+        marginBottom: "24px"
+    },
     root: {
-        marginBottom: "25px",
+        marginBottom: "24px",
     },
 });
 

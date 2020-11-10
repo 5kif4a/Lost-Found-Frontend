@@ -1,11 +1,10 @@
 import {axiosInstance} from "./axiosInstance";
 
-export const getPosts = async () => {
+export const getStories = async () => {
     try {
-        const response = await axiosInstance.get("/posts");
+        const response = await axiosInstance.get("/stories");
         return response.data;
     } catch (error) {
         throw error;
     }
 };
-

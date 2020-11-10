@@ -1,35 +1,55 @@
-import React, {FC} from "react";
+import React, {FC, useEffect, useState} from "react";
 import Stories from 'react-insta-stories';
 import {useHistory} from "react-router";
-import {Box} from "@material-ui/core";
+import {Box, LinearProgress} from "@material-ui/core";
 import {useStoriesStyles} from "./StoriesStyles";
+import {useTypedSelector} from "../../store/store";
+import {useDispatch} from "react-redux";
+import {getStoriesThunk} from "../../store/thunk/stories.thunk";
+import {useSnackbar} from "notistack";
+import {Story} from "react-insta-stories/dist/interfaces";
 
-const stories: any = [
-    {
-        url: "https://f8k9u4w5.stackpathcdn.com/wp-content/uploads/2013/03/Lost-house-keys.jpg",
-        duration: 5000,
-        header: {
-            heading: 'Асель Гаппарова',
-            subheading: 'Опубликовано 30 мин. назад',
-            profileImage: 'https://via.placeholder.com/100x100',
-        },
-    },
-
-]
+const storyContent: any = {
+    minWidth: '100vw',
+    minHeight: '100vh',
+}
 
 export const _Stories: FC = () => {
     const history = useHistory();
+    const dispatch: any = useDispatch();
+    const {enqueueSnackbar} = useSnackbar();
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
+    const stories: Story[] = useTypedSelector(state => state.stories.stories)
     const classes = useStoriesStyles();
 
     const handleAllStoriesEnd = () => history.push("/feed")
 
+    const getStories = async () => {
+        try {
+            setIsLoading(true)
+            await dispatch(getStoriesThunk());
+        } catch (e) {
+            enqueueSnackbar("Произошла ошибка при загрузке истории")
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    useEffect(() => {
+        getStories();
+    }, [])
+
+
     return (
         <Box className={classes.root}>
-            <Stories
+            {isLoading ? <LinearProgress style={{color: "#0008C4"}}/> : <Stories
                 stories={stories}
+                storyStyles={storyContent}
                 onAllStoriesEnd={handleAllStoriesEnd}
                 defaultInterval={5000}
-            />
+            />}
         </Box>
 
     )

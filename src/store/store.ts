@@ -1,18 +1,32 @@
-import { combineReducers, createStore, applyMiddleware } from "redux"
-import { profileReducer } from "./reducers/profileReducer"
-import { authReducer } from "./reducers/authReducers"
+import {applyMiddleware, combineReducers, createStore} from "redux"
+import {profileReducer} from "./reducers/profile.reducer"
+import {authReducer} from "./reducers/auth.reducer"
 
 import thunkMiddleware from "redux-thunk";
+import {postsReducer} from "./reducers/posts.reducer";
+import {createSelectorHook} from "react-redux";
+import {storiesReducer} from "./reducers/stories.reducer";
+import {IAction} from "./actions";
 
+interface IRootReducer {
+    profile: any
+    auth: any
+    posts: any
+    stories: any
+}
 
-let rootReducers: any = combineReducers({
-    profileReducer,
-    authReducer
+const rootReducer = combineReducers<IRootReducer>({
+    profile: profileReducer,
+    auth: authReducer,
+    posts: postsReducer,
+    stories: storiesReducer
 })
 
-const store = createStore(rootReducers, applyMiddleware(thunkMiddleware))
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
 
-//@ts-ignore
-window.__store__ = store;
 
 export default store
+
+export type RootState = ReturnType<typeof rootReducer>
+
+export const useTypedSelector = createSelectorHook<RootState, IAction>();

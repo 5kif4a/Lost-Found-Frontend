@@ -8,6 +8,7 @@ export const useFeedStyles = makeStyles((theme) => ({
     stories: {
         height: "128px",
         display: "flex",
+        justifyContent: "center",
         alignItems: "center",
         margin: "8px 16px",
     },

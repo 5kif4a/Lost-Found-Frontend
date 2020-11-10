@@ -1,11 +1,10 @@
 import {makeStyles} from "@material-ui/core/styles";
 
 export const usePostCardStyles = makeStyles((theme) => ({
-    root: {
-        width: "100px",
-        height: "150px",
-    },
+    root: {},
     img: {
-        borderRadius: "20px"
+        borderRadius: "20px",
+        width: "120px",
+        height: "150px",
     }
 }))
