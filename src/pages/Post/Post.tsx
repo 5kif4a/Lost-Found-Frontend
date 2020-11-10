@@ -3,10 +3,12 @@ import {Avatar, Box, Divider, IconButton, Typography} from "@material-ui/core";
 import {usePostStyles} from "./PostStyles";
 import PhoneIcon from '@material-ui/icons/Phone';
 import ChatIcon from '@material-ui/icons/Chat';
-import {useHistory, useParams} from "react-router";
+import {useParams} from "react-router";
 import {useTypedSelector} from "../../store/store";
 import {IPost} from "../../store/reducers/posts.reducer";
 import ShareIcon from '@material-ui/icons/Share';
+import {Share} from "../../components/Share/Share";
+
 
 interface ParamTypes {
     postId: string
@@ -14,11 +16,15 @@ interface ParamTypes {
 
 export const Post: FC = () => {
     const classes = usePostStyles();
-    const history = useHistory();
+
+    const [shareModalIsOpen, setShareModalIsOpen] = useState<boolean>(false)
     const {postId} = useParams<ParamTypes>();
     const posts: IPost[] = useTypedSelector(state => state.posts.posts)
 
     const [post, setPost] = useState<IPost>();
+
+    const handleOpenShareModal = () => setShareModalIsOpen(true);
+    const handleCloseShareModal = () => setShareModalIsOpen(false);
 
     useEffect(() => {
         if (postId) {
@@ -28,12 +34,13 @@ export const Post: FC = () => {
 
     return (
         <Box className={classes.root}>
+            <Share open={shareModalIsOpen} onClose={handleCloseShareModal}/>
             <img className={classes.img} src={post?.imageIndex} alt="post image"/>
             <Box className={classes.toolbar}>
                 <Box className={classes.toolbar__btn_block}>
                     <IconButton><PhoneIcon/></IconButton>
                     <IconButton><ChatIcon/></IconButton>
-                    <IconButton><ShareIcon/></IconButton>
+                    <IconButton onClick={handleOpenShareModal}><ShareIcon/></IconButton>
                 </Box>
                 <Box className={classes.toolbar__avatar}>
                     <Typography className={classes.toolbar__avatar__name}>
