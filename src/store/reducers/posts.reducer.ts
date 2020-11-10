@@ -1,5 +1,5 @@
 import {IAction} from "../actions";
-import {GET_POSTS} from "../actions/posts.action";
+import {GET_POSTS, PUBLISH_POST} from "../actions/posts.action";
 import {ICategory, IUser} from "./interfaces";
 
 export interface IPost {
@@ -26,6 +26,11 @@ export const postsReducer = (state = initialState, action: IAction) => {
             return {
                 ...state,
                 posts: action.data
+            }
+        }
+        case PUBLISH_POST: {
+            return {
+                ...state
             }
         }
         default: {

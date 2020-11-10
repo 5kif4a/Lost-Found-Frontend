@@ -7,19 +7,22 @@ import {postsReducer} from "./reducers/posts.reducer";
 import {createSelectorHook} from "react-redux";
 import {storiesReducer} from "./reducers/stories.reducer";
 import {IAction} from "./actions";
+import {referencesReducer} from "./reducers/references.reducer";
 
 interface IRootReducer {
     profile: any
     auth: any
     posts: any
     stories: any
+    references: any
 }
 
 const rootReducer = combineReducers<IRootReducer>({
     profile: profileReducer,
     auth: authReducer,
     posts: postsReducer,
-    stories: storiesReducer
+    stories: storiesReducer,
+    references: referencesReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))

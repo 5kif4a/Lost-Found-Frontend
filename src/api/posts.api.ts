@@ -9,3 +9,13 @@ export const getPosts = async () => {
     }
 };
 
+export const publishPost = async (data: any) => {
+    try {
+        const response = await axiosInstance.post("/me/posts", data, {headers: {"Content-Type": "multipart/form-data"},});
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+

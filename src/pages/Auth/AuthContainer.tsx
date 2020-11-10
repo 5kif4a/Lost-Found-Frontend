@@ -31,9 +31,13 @@ class _AuthContainer extends React.Component<PropsType> {
     }
 
 
-    login = (e: Event) => {
+    login = async (e: Event) => {
         e.preventDefault();
-        this.props.authUserThunk(this.props.email, this.props.password);
+        try {
+            await this.props.authUserThunk(this.props.email, this.props.password);
+        } catch (error) {
+
+        }
     };
 
     render() {
