@@ -15,9 +15,9 @@ export const Feed: FC = () => {
     const history = useHistory();
 
     const handleAddPost = () => history.push("/create-post");
-    const handleFound = () => history.push("/posts");
-    const handleSearching = () => history.push("/posts");
-    const handleRecent = () => history.push("/posts");
+    const handleFound = () => history.push("/stories");
+    const handleSearching = () => history.push("/stories");
+    const handleRecent = () => history.push("/stories");
 
     return (
         <Box className={classes.root}>

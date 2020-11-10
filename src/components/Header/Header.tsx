@@ -9,7 +9,7 @@ export const Header: FC = () => {
     const classes = useHeaderStyles();
     const history = useHistory();
 
-    const handleGoBack = () => history.goBack();
+    const handleGoBack = () => history.push("/feed");
 
     return (
         <Box className={classes.root}>
