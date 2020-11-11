@@ -8,17 +8,15 @@ import {_Stories} from "../pages/Stories/Stories";
 import {CreatePost} from "../pages/CreatePost/CreatePost";
 import {DetailItem} from "../pages/DetailItem/DetailItem"
 import {PrivateRoute} from "./PrivateRoute";
-import {Found} from "../pages/Found/Found";
 import {AddItem} from "../pages/AddItem/AddItem";
-import { FeedbackContainer } from "../pages/Feedback/FeedbackContainer";
+import {FeedbackContainer} from "../pages/Feedback/FeedbackContainer";
 
 export const Routes: FC = () => {
     return (
         <Switch>
             <Route exact path="/" component={AuthContainer}/>
             <Route exact path="/create-post" component={CreatePost}/>
-            <Route exact path="/found/:itemId" component={Found}/>
-            <Route exact path="/feedback" component={FeedbackContainer}/>
+            <Route exact path="/feedback/:itemId" component={FeedbackContainer}/>
             <PrivateRoute exact path="/feed" component={Feed}/>
             <PrivateRoute exact path="/stories" component={_Stories}/>
             <PrivateRoute exact path="/posts/:postId" component={Post}/>

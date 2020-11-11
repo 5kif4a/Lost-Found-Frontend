@@ -59,11 +59,6 @@ export const Feed: FC = () => {
                     onClick={handleAddPost}
                 />
                 <StorieCard
-                    icon={<FoundIcon/>}
-                    title={"Нашли"}
-                    onClick={handleFound}
-                />
-                <StorieCard
                     icon={<SearchIcon/>}
                     title={"Ищут"}
                     onClick={handleSearching}

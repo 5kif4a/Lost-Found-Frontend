@@ -28,7 +28,7 @@ export const DetailItem: FC = () => {
     return (
         <Box className={classes.root}>
             <Grid container justify="space-evenly" className={classes.header}>
-                <QRCode value={`https://lostnfound-d1fc1.web.app/found/${item?.id}`}/>
+                <QRCode value={`https://lostnfound-d1fc1.web.app/feedback/${item?.id}`}/>
                 <img src={item?.imageIndex} style={{width: "200px", height: "200px"}} alt="item"/>
             </Grid>
 
