@@ -58,6 +58,7 @@ export const CreatePost: FC = () => {
 
             data.append("title", title);
             data.append("description", description);
+            data.append("location", placeOfLoss);
             data.append("image", file);
             data.append("category", category);
 

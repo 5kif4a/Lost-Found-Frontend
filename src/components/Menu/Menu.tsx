@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useEffect} from "react";
 import {useMenuStyles} from "./MenuStyles";
 import {useHistory} from "react-router-dom";
 import {Avatar, Box, Button, Divider, IconButton, Typography} from "@material-ui/core";
@@ -11,6 +11,7 @@ import Notification from "../../assets/svg/notification.svg";
 import {useTypedSelector} from "../../store/store";
 import {useDispatch} from "react-redux";
 import {logout} from "../../store/actions/auth.action";
+import {getProfileInfoThunk} from "../../store/thunk/profile.thunk";
 
 interface IMenuProps {
     onClose: any
@@ -22,7 +23,7 @@ export const Menu: FC<IMenuProps> = ({onClose}) => {
     const dispatch: any = useDispatch();
 
     const {isAuthenticated} = useTypedSelector(state => state.auth);
-    const profile = useTypedSelector(state => state.profile);
+    const {fullName, karma, avatar} = useTypedSelector(state => state.profile);
 
     const handleClickItem = (route: string) => {
         history.push(route);
@@ -36,6 +37,10 @@ export const Menu: FC<IMenuProps> = ({onClose}) => {
         history.push("/")
     }
 
+    useEffect(() => {
+        if (isAuthenticated && !fullName) dispatch(getProfileInfoThunk());
+    }, [])
+
     return (
         <Box className={classes.root}>
             <Box className={classes.header}>
@@ -45,10 +50,10 @@ export const Menu: FC<IMenuProps> = ({onClose}) => {
                 <Box className={classes.user}>
                     {isAuthenticated && <>
                         <Box className={classes.user_info}>
-                            <Typography className={classes.user_fullname}>{profile.fullName}</Typography>
-                            <Typography className={classes.user_karma}>Карма: {profile.karma}</Typography>
+                            <Typography className={classes.user_fullname}>{fullName}</Typography>
+                            <Typography className={classes.user_karma}>Карма: {karma}</Typography>
                         </Box>
-                        <Avatar src={profile.avatar}/>
+                        <Avatar src={avatar}/>
                     </>}
                 </Box>
             </Box>

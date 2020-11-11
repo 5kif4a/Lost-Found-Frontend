@@ -13,6 +13,7 @@ import {getPostsThunk} from "../../store/thunk/posts.thunk";
 import {useDispatch} from "react-redux";
 import {useSnackbar} from "notistack";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import {NoData} from "../../components/NoData/NoData";
 
 export const Feed: FC = () => {
     const classes = useFeedStyles();
@@ -83,7 +84,7 @@ export const Feed: FC = () => {
                     wrap="wrap"
                     justify="space-evenly"
                 >
-                    {_posts}
+                    {<NoData title={"Пока нет постов"}/> || _posts}
                 </Grid>
             )}
         </Box>

@@ -5,3 +5,4 @@ export const ADD_ITEM = "ADD_ITEM"
 
 
 export const getItemsAC = (data: any): IAction => ({type: GET_ITEMS, data})
+export const addItemAC = (): IAction => ({type: ADD_ITEM})

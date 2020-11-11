@@ -19,7 +19,7 @@ export const Items: FC = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const handleAddItem = () => history.push("/add-item")
+    const handleAddItem = () => history.push("/me/items/add")
 
     const loadItems = async () => {
         try {

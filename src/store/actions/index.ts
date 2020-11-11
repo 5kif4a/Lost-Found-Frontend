@@ -1,4 +1,4 @@
 export interface IAction {
     type: string
-    data: any
+    data?: any
 }

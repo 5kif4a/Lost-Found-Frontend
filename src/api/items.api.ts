@@ -9,3 +9,11 @@ export const getItems = async () => {
     }
 };
 
+export const addItem = async (data: any) => {
+    try {
+        await axiosInstance.post("/me/items", data);
+    } catch (error) {
+        throw error;
+    }
+};
+
