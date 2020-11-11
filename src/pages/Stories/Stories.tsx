@@ -31,6 +31,7 @@ export const _Stories: FC = () => {
             setIsLoading(true)
             await dispatch(getStoriesThunk());
         } catch (e) {
+            console.log(e)
             enqueueSnackbar("Произошла ошибка при загрузке истории")
         } finally {
             setIsLoading(false)

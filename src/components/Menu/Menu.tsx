@@ -72,15 +72,15 @@ export const Menu: FC<IMenuProps> = ({onClose}) => {
                     <img className={classes.menu__icon} src={CreatePost}/>
                     <Typography>Cоздать объявление</Typography>
                 </Box>
-                <Box className={classes.menu__item} onClick={() => handleClickItem("/qr")}>
-                    <img className={classes.menu__icon} src={QRTag}/>
-                    <Typography>QR метки </Typography>
-                </Box>
-                {isAuthenticated && <Box className={classes.menu__item}
-                                         onClick={() => handleClickItem("/notifications")}>
-                    <img className={classes.menu__icon} src={Notification}/>
-                    <Typography>Уведомления</Typography>
-                </Box>}
+                {/*<Box className={classes.menu__item} onClick={() => handleClickItem("/qr")}>*/}
+                {/*    <img className={classes.menu__icon} src={QRTag}/>*/}
+                {/*    <Typography>QR метки </Typography>*/}
+                {/*</Box>*/}
+                {/*{isAuthenticated && <Box className={classes.menu__item}*/}
+                {/*                         onClick={() => handleClickItem("/notifications")}>*/}
+                {/*    <img className={classes.menu__icon} src={Notification}/>*/}
+                {/*    <Typography>Уведомления</Typography>*/}
+                {/*</Box>}*/}
             </Box>
             {isAuthenticated &&
             <Button color="primary" variant="contained" className={classes.logout} onClick={handleLogout}>Выйти из

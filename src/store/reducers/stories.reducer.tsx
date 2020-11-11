@@ -22,6 +22,7 @@ const initialState: IStoriesState = {
 export const storiesReducer = (state = initialState, action: IAction) => {
     switch (action.type) {
         case GET_STORIES: {
+
             const stories = action.data.map((story: IStory) => {
                 return {
                     url: story.posts[0].imageIndex,

@@ -84,7 +84,7 @@ export const Feed: FC = () => {
                     wrap="wrap"
                     justify="space-evenly"
                 >
-                    {<NoData title={"Пока нет постов"}/> || _posts}
+                    {_posts || <NoData title={"Пока нет постов"}/>}
                 </Grid>
             )}
         </Box>

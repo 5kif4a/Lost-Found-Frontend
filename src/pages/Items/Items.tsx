@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from "react";
-import {Box, Button, Divider, Grid, TextField} from "@material-ui/core";
+import {Box, Button, Divider, Grid, IconButton, TextField} from "@material-ui/core";
 import {useItemsStyles} from "./ItemsStyles";
 import {ItemCard} from "../../components/ItemCard/ItemCard";
 import {useDispatch} from "react-redux";
@@ -9,6 +9,7 @@ import {useTypedSelector} from "../../store/store";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import {NoData} from "../../components/NoData/NoData";
 import {useHistory} from "react-router";
+import AddIcon from '@material-ui/icons/Add';
 
 export const Items: FC = () => {
     const classes = useItemsStyles();
@@ -34,7 +35,7 @@ export const Items: FC = () => {
 
     const _items = items.map((item, index) =>
         <Grid key={index} item>
-            <ItemCard/>
+            <ItemCard item={item}/>
         </Grid>)
 
     useEffect(() => {
@@ -49,6 +50,9 @@ export const Items: FC = () => {
                     variant="outlined"
                     fullWidth
                 />
+                <IconButton onClick={() => history.push("/me/items/add")}>
+                    <AddIcon/>
+                </IconButton>
             </Box>
             <Divider/>
             {isLoading
@@ -58,14 +62,14 @@ export const Items: FC = () => {
                     container
                     wrap="wrap"
                     justify="space-evenly">
-                    {<NoData title="Нет отмеченных вещей">
+                    {_items || <NoData title="Нет отмеченных вещей">
                         <Button
                             color="primary"
                             variant="contained"
                             onClick={handleAddItem}>
                             Добавить вещь
                         </Button>
-                    </NoData> || _items}
+                    </NoData>}
                 </Grid>)}
         </Box>
     );

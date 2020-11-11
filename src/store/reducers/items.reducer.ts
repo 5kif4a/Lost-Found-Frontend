@@ -1,7 +1,14 @@
 import {IAction} from "../actions";
 import {ADD_ITEM, GET_ITEMS} from "../actions/items.action";
+import {IReference} from "./references.reducer";
 
 export interface IItem {
+    id: string
+    name: string
+    imageIndex: string
+    description: string
+    categories: IReference
+    status: IReference
 }
 
 export interface IItemsState {
