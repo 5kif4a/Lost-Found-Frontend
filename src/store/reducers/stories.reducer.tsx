@@ -22,16 +22,17 @@ const initialState: IStoriesState = {
 export const storiesReducer = (state = initialState, action: IAction) => {
     switch (action.type) {
         case GET_STORIES: {
-
-            const stories = action.data.map((story: IStory) => {
+            const data: Array<any> = action.data.map((block: any) => block.posts)
+            console.log(data.flat())
+            const stories = data.flat().map((story: any) => {
                 return {
-                    url: story.posts[0].imageIndex,
+                    url: story.imageIndex,
                     header: {
-                        heading: story.posts[0].user.fullName,
+                        heading: story.user.fullName,
                         subheading: story.name,
-                        profileImage: story.posts[0].user.avatar,
+                        profileImage: story.user.avatar,
                     },
-                    seeMore: () => <Redirect to={`/posts/${story.posts[0].id}`}/>
+                    seeMore: () => <Redirect to={`/posts/${story.id}`}/>
                 }
             })
             return {
