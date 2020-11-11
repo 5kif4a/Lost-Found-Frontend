@@ -4,7 +4,6 @@ import {useFeedStyles} from "./FeedStyles";
 import {StorieCard} from "../../components/StorieCard/StorieCard";
 import AddIcon from "@material-ui/icons/Add";
 import {useHistory} from "react-router-dom";
-import {FoundIcon} from "../../assets/icons/FoundIcon";
 import {PostCard} from "../../components/PostCard/PostCard";
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import SearchIcon from "@material-ui/icons/Search";
@@ -79,7 +78,7 @@ export const Feed: FC = () => {
                     wrap="wrap"
                     justify="space-evenly"
                 >
-                    {_posts || <NoData title={"Пока нет постов"}/>}
+                    {_posts.length ? _posts : <NoData title={"Пока нет постов"}/>}
                 </Grid>
             )}
         </Box>

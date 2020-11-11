@@ -62,7 +62,7 @@ export const Items: FC = () => {
                     container
                     wrap="wrap"
                     justify="space-evenly">
-                    {_items || <NoData title="Нет отмеченных вещей">
+                    {_items.length ? _items: <NoData title="Нет отмеченных вещей">
                         <Button
                             color="primary"
                             variant="contained"
